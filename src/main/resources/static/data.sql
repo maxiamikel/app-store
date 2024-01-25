@@ -1,0 +1,1 @@
+INSERT INTO tb_categories (id, name) VALUES( NULL, "Teste 12");
