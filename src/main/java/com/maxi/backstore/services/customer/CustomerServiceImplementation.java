@@ -26,7 +26,7 @@ public class CustomerServiceImplementation implements CustomerService {
 
     @Override
     public Customer createCustomer(Customer customer) {
-        Customer customerDB = this.findByPersonalId(null);
+        Customer customerDB = customerRepository.findByPersonalId(customer.getPersonalId());
         if (customerDB != null) {
             return customerDB;
         } else {

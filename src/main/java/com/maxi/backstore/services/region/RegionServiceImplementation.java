@@ -18,6 +18,9 @@ public class RegionServiceImplementation implements RegionService {
     @Override
     public Region findByName(String name) {
         Region region = regionRepository.findByName(name);
+        if (region == null) {
+            throw new RuntimeException("No region content to show");
+        }
         return region;
     }
 
@@ -30,7 +33,7 @@ public class RegionServiceImplementation implements RegionService {
 
     @Override
     public Region createRegion(Region region) {
-        Region regionDB = this.findByName(null);
+        Region regionDB = regionRepository.findByName(region.getName());
         if (regionDB != null) {
             return regionDB;
         }

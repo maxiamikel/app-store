@@ -12,8 +12,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     public Customer findByPersonalId(String personalId);
 
+    @Query("SELECT c FROM Customer c WHERE c.status =ACTIVATE")
     public List<Customer> findByRegion(Region region);
 
-    @Query("SELECT c FROM Customer c")
+    @Query("SELECT c FROM Customer c WHERE c.status=ACTIVATE")
     public List<Customer> findAllCustomers();
 }
