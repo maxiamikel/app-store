@@ -6,4 +6,5 @@ import com.maxi.backstore.entities.Category;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
+    public Category findByName(String name);
 }

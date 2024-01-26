@@ -2,8 +2,10 @@ package com.maxi.backstore.entities;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.maxi.backstore.enums.ProductStatus;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -46,8 +48,13 @@ public class Product {
     @Temporal(TemporalType.DATE)
     private LocalDate expireAt;
 
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = true)
+    private LocalDate lastUpdate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_fk")
+    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
     private Category category;
 
 }
