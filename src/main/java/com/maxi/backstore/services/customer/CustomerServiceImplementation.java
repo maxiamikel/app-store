@@ -69,13 +69,19 @@ public class CustomerServiceImplementation implements CustomerService {
     @Override
     public Customer updateCustomer(Customer customer) {
         Customer customerDB = this.findByCustomerId(customer.getId());
-        customerDB.setEmail(customer.getEmail());
-        customerDB.setFoneNumber(customer.getEmail());
-        customerDB.setName(customer.getName());
-        customerDB.setRegion(customer.getRegion());
+        if (!customerDB.getPersonalId().equalsIgnoreCase(customer.getPersonalId())) {
+            throw new RuntimeException(
+                    "The Personal Id is not matches");
+        } else {
+            customerDB.setEmail(customer.getEmail());
+            customerDB.setFoneNumber(customer.getEmail());
+            customerDB.setName(customer.getName());
+            customerDB.setRegion(customer.getRegion());
 
-        customerDB = customerRepository.saveAndFlush(customerDB);
-        return customerDB;
+            customerDB = customerRepository.saveAndFlush(customerDB);
+            return customerDB;
+        }
+
     }
 
     @Override
