@@ -36,7 +36,7 @@ public class Product {
     private Long id;
     private String name;
     private String description;
-    private Double stock;
+    private Integer stock;
     private Double price;
 
     @Enumerated(EnumType.STRING)

@@ -7,9 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.maxi.backstore.entities.Order;
 import com.maxi.backstore.enums.OrderStatus;
-import com.maxi.backstore.repositories.OrderItemRepository;
 import com.maxi.backstore.repositories.OrderRepository;
-import com.maxi.backstore.repositories.ProductRepository;
+import com.maxi.backstore.services.orderItem.OrderItemServiceImplementation;
 
 @Service
 public class OrderServiceImplementation implements OrderService {
@@ -17,8 +16,8 @@ public class OrderServiceImplementation implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    // @Autowired
-    // private OrderItemRepository orderItemRepository;
+    @Autowired
+    private OrderItemServiceImplementation orderItemService;
 
     // @Autowired
     // private ProductRepository productRepository;

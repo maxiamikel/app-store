@@ -88,12 +88,12 @@ public class ProductServiceImplementation implements ProductService {
     }
 
     @Override
-    public Product updateStock(Long id, Double quantity) {
+    public Product updateStock(Long id, Integer quantity) {
         Product product = this.findPdoructById(id);
         if (quantity <= 0) {
             throw new RuntimeException("You have to introduice a positive value!");
         }
-        Double stock = product.getStock() + quantity;
+        Integer stock = product.getStock() + quantity;
         product.setStock(stock);
         productRepository.save(product);
 
@@ -101,17 +101,15 @@ public class ProductServiceImplementation implements ProductService {
     }
 
     @Override
-    public Product substractStock(Long id, Double quantity) {
+    public void substractStock(Long id, Integer quantity) {
         Product product = this.findPdoructById(id);
         if (product.getStock() < quantity) {
             throw new RuntimeException(
                     "The stock is not available to substract this value: [" + product.getStock() + "] available");
         }
-        Double stock = product.getStock() - quantity;
+        Integer stock = product.getStock() - quantity;
         product.setStock(stock);
         productRepository.save(product);
-
-        return product;
     }
 
     @Override

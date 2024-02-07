@@ -66,13 +66,14 @@ public class ProductController {
 
     @PutMapping("/{id}/stock")
     public ResponseEntity<Product> updateStock(@PathVariable Long id,
-            @RequestParam(name = "quantity", required = true) Double quantity) {
+            @RequestParam(name = "quantity", required = true) Integer quantity) {
         return ResponseEntity.ok().body(productService.updateStock(id, quantity));
     }
 
     @PutMapping("/stock/{id}")
-    public ResponseEntity<Product> substractStock(@PathVariable Long id,
-            @RequestParam(name = "quantity", required = true) Double quantity) {
-        return ResponseEntity.ok().body(productService.substractStock(id, quantity));
+    public ResponseEntity<?> substractStock(@PathVariable Long id,
+            @RequestParam(name = "quantity", required = true) Integer quantity) {
+        productService.substractStock(id, quantity);
+        return ResponseEntity.ok().body("Success");
     }
 }

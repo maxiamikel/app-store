@@ -16,9 +16,9 @@ public interface ProductService {
 
     public Product updateProduct(Long id, Product product);
 
-    public Product updateStock(Long id, Double quantity);
+    public Product updateStock(Long id, Integer quantity);
 
-    public Product substractStock(Long id, Double quantity);
+    public void substractStock(Long id, Integer quantity);
 
     public Product deleteProduct(Long id);
 }

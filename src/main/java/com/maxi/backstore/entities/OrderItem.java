@@ -23,10 +23,11 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Double quantity;
+    private Integer quantity;
     private Double price;
 
     private Long productId;
+    private Long OrderId;
 
     @Transient
     private Double subTotal;
@@ -40,7 +41,7 @@ public class OrderItem {
     }
 
     public OrderItem() {
-        this.quantity = (double) 0;
+        this.quantity = 0;
         this.price = (double) 0;
     }
 

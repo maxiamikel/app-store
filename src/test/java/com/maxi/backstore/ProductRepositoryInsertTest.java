@@ -19,51 +19,51 @@ import com.maxi.backstore.repositories.ProductRepository;
 @SpringBootTest
 public class ProductRepositoryInsertTest {
 
-    @Autowired
-    private ProductRepository productRepository;
+        @Autowired
+        private ProductRepository productRepository;
 
-    @Autowired
-    private CategoryRepository categoryRepository;
+        @Autowired
+        private CategoryRepository categoryRepository;
 
-    @Test
-    public void whenFindByCategory_thenReturnListProduct() {
+        @Test
+        public void whenFindByCategory_thenReturnListProduct() {
 
-        Category c1 = Category.builder()
-                .id(null)
-                .name("Books").build();
+                Category c1 = Category.builder()
+                                .id(null)
+                                .name("Books").build();
 
-        Category c2 = Category.builder()
-                .id(null)
-                .name("Books relij").build();
+                Category c2 = Category.builder()
+                                .id(null)
+                                .name("Books relij").build();
 
-        categoryRepository.saveAll(Arrays.asList(c1, c2));
+                categoryRepository.saveAll(Arrays.asList(c1, c2));
 
-        Product p1 = Product.builder()
-                .name("Computer")
-                .category(c1)
-                .createAt(LocalDate.now())
-                .description("Description")
-                .expireAt(LocalDate.now())
-                .price(Double.parseDouble("23.90"))
-                .status(ProductStatus.CREATED)
-                .stock(Double.parseDouble("20.00"))
-                .build();
+                Product p1 = Product.builder()
+                                .name("Computer")
+                                .category(c1)
+                                .createAt(LocalDate.now())
+                                .description("Description")
+                                .expireAt(LocalDate.now())
+                                .price(Double.parseDouble("23.90"))
+                                .status(ProductStatus.CREATED)
+                                .stock(20)
+                                .build();
 
-        Product p2 = Product.builder()
-                .name("Computer")
-                .category(c1)
-                .createAt(LocalDate.now())
-                .description("Description")
-                .expireAt(LocalDate.now())
-                .price(Double.parseDouble("23.90"))
-                .status(ProductStatus.CREATED)
-                .stock(Double.parseDouble("20.00"))
-                .build();
+                Product p2 = Product.builder()
+                                .name("Computer")
+                                .category(c1)
+                                .createAt(LocalDate.now())
+                                .description("Description")
+                                .expireAt(LocalDate.now())
+                                .price(Double.parseDouble("23.90"))
+                                .status(ProductStatus.CREATED)
+                                .stock(10)
+                                .build();
 
-        productRepository.saveAll(Arrays.asList(p1, p2));
+                productRepository.saveAll(Arrays.asList(p1, p2));
 
-        List<Product> list = productRepository.findByCategory(p1.getCategory());
-        assertEquals(list.size(), 2);
-    }
+                List<Product> list = productRepository.findByCategory(p1.getCategory());
+                assertEquals(list.size(), 2);
+        }
 
 }

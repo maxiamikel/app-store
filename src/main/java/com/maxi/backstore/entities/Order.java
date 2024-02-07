@@ -52,6 +52,7 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+    private Double Total;
 
     public Order() {
         items = new ArrayList<>();
